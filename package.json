@@ -1,0 +1,52 @@
+{
+  "name": "balance-service",
+  "version": "1.0.0",
+  "description": "Production-ready NestJS balance service with payment history, idempotency, caching and rate limiting",
+  "private": true,
+  "scripts": {
+    "build": "nest build",
+    "format": "prettier --write \"src/**/*.ts\" \"libs/**/*.ts\" \"test/**/*.ts\" \"migrations/**/*.ts\"",
+    "start:dev": "nest start --watch",
+    "start:prod": "node dist/src/main",
+    "migration:generate": "typeorm-ts-node-commonjs migration:generate -d database/data-source.ts",
+    "migration:run": "typeorm-ts-node-commonjs migration:run -d database/data-source.ts"
+  },
+  "dependencies": {
+    "@fastify/static": "^9.0.0",
+    "@nestjs/common": "^11.1.15",
+    "@nestjs/config": "^4.0.3",
+    "@nestjs/core": "^11.1.15",
+    "@nestjs/platform-fastify": "^11.1.15",
+    "@nestjs/swagger": "^11.2.6",
+    "@nestjs/typeorm": "^11.0.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.1",
+    "nest-winston": "^1.10.0",
+    "nestjs-cls": "^5.3.0",
+    "pg": "^8.13.1",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.1",
+    "typeorm": "^0.3.20",
+    "uuid": "^11.0.5",
+    "winston": "^3.17.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^10.4.9",
+    "@nestjs/schematics": "^10.2.3",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^20.17.9",
+    "@types/uuid": "^10.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.18.2",
+    "@typescript-eslint/parser": "^8.18.2",
+    "eslint": "^8.57.1",
+    "eslint-plugin-import": "^2.31.0",
+    "husky": "^9.1.7",
+    "jest": "^29.7.0",
+    "lint-staged": "^15.3.0",
+    "prettier": "^3.4.2",
+    "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  }
+}
