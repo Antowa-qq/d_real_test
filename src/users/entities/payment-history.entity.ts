@@ -7,9 +7,11 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { IPaymentHistory } from '../interfaces/payment-history.interface';
-import { User } from './user.entity';
+
 import { PaymentAction } from '../enums/payment-history.enum';
+import { IPaymentHistory } from '../interfaces/payment-history.interface';
+
+import { User } from './user.entity';
 
 @Entity('payment_history')
 @Index('idx_payment_history_user_id_ts', ['userId', 'ts'])
@@ -24,7 +26,12 @@ export class PaymentHistory implements IPaymentHistory {
   @Column({ type: 'enum', enum: PaymentAction })
   action: PaymentAction;
 
-  @Column({ type: 'numeric' })
+  @Column({
+    type: 'numeric',
+    precision: 12,
+    scale: 2,
+    transformer: { to: (v: number) => v, from: (v: string) => parseFloat(v) },
+  })
   amount: number;
 
   @Column({ type: 'timestamptz', default: () => 'NOW()' })
